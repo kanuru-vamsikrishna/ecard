@@ -38,18 +38,18 @@ function ViewCandidate(props) {
         });
       });
   };
-  const download = (e) => {
-    console.log(e.target.href);
+  const download = (photo) => {
     axios({
-      url: e.target.href,
+      url: photo,
       method: "GET",
       responseType: "blob",
     })
       .then((response) => {
+        console.log(response.data);
         const url = window.URL.createObjectURL(new Blob([response.data]));
         const link = document.createElement("a");
         link.href = url;
-        link.setAttribute("download", "image.jpg");
+        link.setAttribute("download", `${candidate._id}.jpg`);
         document.body.appendChild(link);
         link.click();
       })
@@ -92,10 +92,8 @@ function ViewCandidate(props) {
                 src={candidate.photo && candidate.photo}
                 sx={{ width: 150, height: 150 }}
               />
-              <Button>
-                <a href={candidate.photo} onClick={(e) => download(e)}>
-                  Download Photo
-                </a>
+              <Button onClick={() => download(candidate.photo)}>
+                Download Photo
               </Button>
               <Typography
                 sx={{ fontSize: 14 }}
@@ -104,17 +102,17 @@ function ViewCandidate(props) {
               >
                 Name : {candidate.name && candidate.name}
               </Typography>
-              <Typography variant="h5" component="div">
+              <Typography sx={{ fontSize: 14 }} color="text.secondary">
                 Age : {candidate.age && candidate.age}
               </Typography>
-              <Typography sx={{ mb: 1.5 }} color="text.secondary">
+              <Typography sx={{ fontSize: 14 }} color="text.secondary">
                 Gender : {candidate.gender && candidate.gender}
               </Typography>
-              <Typography variant="body2">
+              <Typography sx={{ fontSize: 14 }} color="text.secondary">
                 Highest Qualification :{" "}
                 {candidate.qualification && candidate.qualification}
               </Typography>
-              <Typography variant="body2">
+              <Typography sx={{ fontSize: 14 }} color="text.secondary">
                 Signature :
                 <img
                   src={candidate.signature && candidate.signature}

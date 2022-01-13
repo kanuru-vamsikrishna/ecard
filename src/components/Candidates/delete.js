@@ -23,6 +23,11 @@ function RemoveCandidate(props) {
         console.log(response.data.response);
         const candidate = response.data.response;
         dispatch(startDeleteCandidate(candidate._id));
+        Swal.fire({
+          icon: "Success",
+          title: "Removed",
+          text: "Successfully Removed Candidate",
+        });
       })
       .catch((err) => {
         console.log(err);
