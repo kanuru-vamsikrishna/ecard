@@ -49,6 +49,9 @@ function RemoveCandidate(props) {
             value={cand}
             id="fullWidth"
             onChange={handleCandChange}
+            sx={{
+              width: "60ch",
+            }}
           />
           <Button
             style={{ marginTop: "10px" }}

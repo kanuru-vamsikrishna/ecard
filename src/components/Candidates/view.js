@@ -5,6 +5,7 @@ import {
   Button,
   Card,
   CardActions,
+  FormControl,
   CardContent,
   Typography,
 } from "@mui/material";
@@ -63,12 +64,21 @@ function ViewCandidate(props) {
         <h2>View Candidate</h2>
         <br />
         <form>
+          {/* <FormControl
+            variant="outlined"
+            sx={{
+              width: "60ch",
+            }}
+          > */}
           <TextField
             label="Search Id"
             value={candID}
-            id="fullWidth"
             onChange={handleCandChange}
+            sx={{
+              width: "60ch",
+            }}
           />
+          {/* </FormControl> */}
           <Button
             style={{ marginTop: "10px" }}
             onClick={() => {
